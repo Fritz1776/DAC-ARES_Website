@@ -6,6 +6,163 @@
   <title>Net Schedules | Dona Ana County ARES</title>
   <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
+  <style>
+    .subpage-hero { padding: 2rem 0 3rem; }
+
+    .schedule-layout {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .schedule-panel,
+    .notes-panel {
+      background: linear-gradient(180deg, rgba(25,26,23,.95), rgba(18,19,16,.98));
+      border: 1px solid rgba(216,194,161,.14);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 30px var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(216,194,161,.14);
+      background: rgba(0,0,0,.18);
+    }
+
+    .panel-header h2,
+    .panel-header h3 {
+      margin: 0;
+      color: var(--accent-2);
+      line-height: 1.15;
+    }
+
+    .panel-header p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .panel-body { padding: 1rem; }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      padding: 0.85rem 0.8rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(216,194,161,.12);
+    }
+
+    .schedule-table th {
+      color: var(--accent);
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .schedule-table td {
+      color: #efe1c6;
+      line-height: 1.4;
+    }
+
+    .schedule-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .net-name {
+      font-weight: 800;
+      color: #f1e7d4;
+    }
+
+    .mode-chip {
+      display: inline-block;
+      padding: 0.2rem 0.45rem;
+      border: 1px solid rgba(216,194,161,.18);
+      border-radius: 999px;
+      background: rgba(138,153,83,.10);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .note-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .note-list li {
+      position: relative;
+      padding-left: 1.35rem;
+      margin: 0.75rem 0;
+      color: #efe1c6;
+      line-height: 1.45;
+    }
+
+    .note-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.05rem;
+      left: 0;
+      width: 12px;
+      height: 22px;
+      background: url('../assets/arrl-mark.png') center/contain no-repeat;
+    }
+
+    .callout {
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border-left: 4px solid #d8c2a1;
+      border-radius: 12px;
+      background: rgba(216,194,161,.10);
+      color: #efe1c6;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 880px) {
+      .schedule-table thead {
+        display: none;
+      }
+
+      .schedule-table,
+      .schedule-table tbody,
+      .schedule-table tr,
+      .schedule-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .schedule-table tr {
+        padding: 0.7rem 0;
+        border-bottom: 1px solid rgba(216,194,161,.12);
+      }
+
+      .schedule-table tr:last-child {
+        border-bottom: none;
+      }
+
+      .schedule-table td {
+        border-bottom: none;
+        padding: 0.28rem 0;
+      }
+
+      .schedule-table td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        margin-bottom: 0.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -29,15 +186,89 @@
 
   <main class="subpage-hero">
     <div class="container">
-      <div class="subpage-box">
-        <a class="back-link" href="../index.html">Back to home</a>
-        <h2>Net Schedules</h2>
-        <p>Use this page for weekly nets, monthly meetings, training nets, and other recurring operating schedules.</p>
-        <ul class="feature-list">
-          <li>This placeholder page is active so the homepage link already works.</li>
-          <li>Replace this text later with your actual local content.</li>
-          <li>The page uses the existing site theme and navigation.</li>
-        </ul>
+      <div class="schedule-layout">
+        <section class="schedule-panel">
+          <div class="panel-header">
+            <a class="back-link" href="../index.html">Back to home</a>
+            <h2>Net Schedules</h2>
+            <p>Current operating schedule for local and regional nets referenced by DAC-ARES.</p>
+          </div>
+          <div class="panel-body">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Net</th>
+                  <th>Day</th>
+                  <th>Time</th>
+                  <th>Channel / Repeater</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Net"><span class="net-name">Dona Ana County ARES Weekly 2m Net</span></td>
+                  <td data-label="Day">Tuesday</td>
+                  <td data-label="Time">6:30 PM</td>
+                  <td data-label="Channel / Repeater">146.760 repeater</td>
+                  <td data-label="Type"><span class="mode-chip">2m</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Net"><span class="net-name">New Mexico Statewide Emergency Preparedness Net</span></td>
+                  <td data-label="Day">Friday</td>
+                  <td data-label="Time">9:00 AM</td>
+                  <td data-label="Channel / Repeater">Megalink repeater system</td>
+                  <td data-label="Type"><span class="mode-chip">Statewide</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Net"><span class="net-name">Southern New Mexico Channel 3 Project Net</span></td>
+                  <td data-label="Day">Wednesday</td>
+                  <td data-label="Time">6:00 PM</td>
+                  <td data-label="Channel / Repeater">FRS/GMRS Channel 3</td>
+                  <td data-label="Type"><span class="mode-chip">FRS / GMRS</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Net"><span class="net-name">National Weather Service Skywarn Net</span></td>
+                  <td data-label="Day">Wednesday</td>
+                  <td data-label="Time">6:30 PM</td>
+                  <td data-label="Channel / Repeater">Megalink repeater system</td>
+                  <td data-label="Type"><span class="mode-chip">Skywarn</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Net"><span class="net-name">Mesilla Valley Radio Club 2m Net</span></td>
+                  <td data-label="Day">Wednesday</td>
+                  <td data-label="Time">6:45 PM</td>
+                  <td data-label="Channel / Repeater">146.640 repeater</td>
+                  <td data-label="Type"><span class="mode-chip">2m</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Net"><span class="net-name">Mesilla Valley Radio Club 6m Net</span></td>
+                  <td data-label="Day">Monday</td>
+                  <td data-label="Time">6:45 PM</td>
+                  <td data-label="Channel / Repeater">53.750 repeater</td>
+                  <td data-label="Type"><span class="mode-chip">6m</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="notes-panel">
+          <div class="panel-header">
+            <h3>Notes</h3>
+            <p>Basic reference information for operators.</p>
+          </div>
+          <div class="panel-body">
+            <ul class="note-list">
+              <li>Times shown are local Mountain Time.</li>
+              <li>This page is a quick reference. Add tones, offsets, links, and net purpose details later as needed.</li>
+              <li>Some nets may occasionally be canceled, moved, or used for special events, exercises, or weather operations.</li>
+            </ul>
+
+            <div class="callout">
+              Next useful additions would be repeater offsets, PL tones, net control notes, and links to the Area Repeaters and Calendar pages.
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   </main>
