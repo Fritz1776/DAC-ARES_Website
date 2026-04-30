@@ -6,6 +6,126 @@
   <title>Calendar | Dona Ana County ARES</title>
   <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link rel="stylesheet" href="../style.css">
+  <style>
+    .calendar-page {
+      padding: 2rem 0 3rem;
+    }
+
+    .calendar-layout {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .calendar-panel,
+    .notes-panel {
+      background: linear-gradient(180deg, rgba(25,26,23,.95), rgba(18,19,16,.98));
+      border: 1px solid rgba(216,194,161,.14);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 30px var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(216,194,161,.14);
+      background: rgba(0,0,0,.18);
+    }
+
+    .panel-header h2,
+    .panel-header h3 {
+      margin: 0;
+      color: var(--accent-2);
+      line-height: 1.15;
+    }
+
+    .panel-header p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .panel-body {
+      padding: 1rem;
+    }
+
+    .calendar-embed-wrap {
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(216,194,161,.14);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .calendar-embed {
+      display: block;
+      width: 100%;
+      height: 760px;
+      border: 0;
+      background: #11120f;
+    }
+
+    .note-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .note-list li {
+      position: relative;
+      padding-left: 1.35rem;
+      margin: 0.75rem 0;
+      color: #efe1c6;
+      line-height: 1.45;
+    }
+
+    .note-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.05rem;
+      left: 0;
+      width: 12px;
+      height: 22px;
+      background: url('../assets/arrl-mark.png') center/contain no-repeat;
+    }
+
+    .callout {
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border-left: 4px solid #d8c2a1;
+      border-radius: 12px;
+      background: rgba(216,194,161,.10);
+      color: #efe1c6;
+      line-height: 1.45;
+    }
+
+    .small-link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .small-link-row a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(216,194,161,.2);
+      border-radius: 10px;
+      background: rgba(138,153,83,.12);
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .calendar-embed {
+        height: 680px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .calendar-embed {
+        height: 620px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -27,17 +147,50 @@
     </div>
   </header>
 
-  <main class="subpage-hero">
+  <main class="calendar-page">
     <div class="container">
-      <div class="subpage-box">
-        <a class="back-link" href="../index.html">Back to home</a>
-        <h2>Calendar</h2>
-        <p>Use this page for a month-by-month view of meetings, nets, exercises, and other DAC-ARES activities.</p>
-        <ul class="feature-list">
-          <li>This placeholder page is active so the homepage link already works.</li>
-          <li>Replace this text later with your actual local content.</li>
-          <li>The page uses the existing site theme and navigation.</li>
-        </ul>
+      <div class="calendar-layout">
+        <section class="calendar-panel">
+          <div class="panel-header">
+            <a class="back-link" href="../index.html">Back to home</a>
+            <h2>Calendar</h2>
+            <p>Live Dona Ana County ARES calendar embedded from Google Calendar.</p>
+          </div>
+
+          <div class="panel-body">
+            <div class="calendar-embed-wrap">
+              <iframe
+                class="calendar-embed"
+                src="https://calendar.google.com/calendar/embed?src=donaanaares%40gmail.com&ctz=America%2FDenver"
+                title="Dona Ana County ARES Calendar"
+                loading="lazy"
+                scrolling="no">
+              </iframe>
+            </div>
+
+            <div class="small-link-row">
+              <a href="https://calendar.google.com/calendar/embed?src=donaanaares%40gmail.com&ctz=America%2FDenver" target="_blank" rel="noopener">Open Calendar Full Screen</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="notes-panel">
+          <div class="panel-header">
+            <h3>Notes</h3>
+            <p>Basic information about the calendar page.</p>
+          </div>
+          <div class="panel-body">
+            <ul class="note-list">
+              <li>This page displays the live Google Calendar for Dona Ana County ARES.</li>
+              <li>Changes made to the source calendar should appear here automatically.</li>
+              <li>If Google Calendar is unavailable, the embedded calendar window may not load.</li>
+            </ul>
+
+            <div class="callout">
+              A future upgrade could add a locally mirrored event list below this window so the webpage still shows the last successful calendar sync during an outage.
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   </main>
