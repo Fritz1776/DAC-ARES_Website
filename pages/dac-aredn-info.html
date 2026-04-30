@@ -90,6 +90,54 @@
       height: 22px;
       background: url('../assets/arrl-mark.png') center/contain no-repeat;
     }
+
+    .mesh-warning {
+      margin: 0.9rem 0 1rem;
+      padding: 0.9rem 1rem;
+      border-left: 4px solid #d8c2a1;
+      border-radius: 12px;
+      background: rgba(216,194,161,.10);
+      color: #efe1c6;
+      line-height: 1.45;
+    }
+
+    .mesh-status-note {
+      margin: 0.75rem 0 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      background: rgba(138,153,83,.12);
+      border: 1px solid rgba(138,153,83,.28);
+      color: #efe1c6;
+      line-height: 1.45;
+    }
+
+    .mesh-node-list {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.9rem;
+    }
+
+    .mesh-node {
+      padding: 0.85rem;
+      border: 1px solid rgba(216,194,161,.14);
+      border-radius: 12px;
+      background: rgba(0,0,0,.16);
+    }
+
+    .mesh-node a {
+      display: inline-block;
+      font-weight: 800;
+      color: #a9bf62;
+      margin-bottom: 0.25rem;
+      overflow-wrap: anywhere;
+    }
+
+    .mesh-node p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
     .small-link-row {
       display: flex;
       flex-wrap: wrap;
@@ -182,7 +230,43 @@
               <img src="../assets/dac-ares-logo.png" alt="DAC-ARES logo">
               <div>
                 <h3>Dona Ana County AREDN Mesh</h3>
-                <p>Local mesh information will be added here as the network grows. This section can include node screenshots, access notes, service names, and deployment guidance.</p>
+                <p>The DAC-ARES local mesh currently has four independent internet connections, including Starlink, cable internet, and two cellular networks.</p>
+
+                <div class="mesh-warning">
+                  <strong>AREDN access warning:</strong> The node links below are internal <code>.local.mesh</code> addresses. They will only work when your device is connected to an AREDN node that is connected to this mesh network. These links are not reachable from the normal public internet.
+                </div>
+
+                <div class="mesh-node-list">
+                  <div class="mesh-node">
+                    <a href="http://nm5xd-dac_ares-supernode.local.mesh/a/status">NM5XD DAC-ARES Supernode</a>
+                    <p>Links our local mesh to the global AREDN mesh.</p>
+                  </div>
+
+                  <div class="mesh-node">
+                    <a href="http://nm5xd-1.local.mesh/a/status">NM5XD-1</a>
+                    <p>Hosts the Winlink Post Office for internet-down operations and the NM5XD BBS.</p>
+                  </div>
+
+                  <div class="mesh-node">
+                    <a href="http://kj5css-aredn.local.mesh/a/status">KJ5CSS-AREDN</a>
+                    <p>DAC-ARES file server and MeshChat host.</p>
+                  </div>
+
+                  <div class="mesh-node">
+                    <a href="http://kj5css-tunnel-server.local.mesh/a/status">KJ5CSS Tunnel Server</a>
+                    <p>Tunnel server for the local mesh.</p>
+                  </div>
+
+                  <div class="mesh-node">
+                    <a href="http://nm5xd-lc_south120.local.mesh/a/status">NM5XD LC South 120</a>
+                    <p>5 GHz Channel 175 Las Cruces South wide-area coverage node; solar powered and self-contained.</p>
+                  </div>
+
+                  <div class="mesh-node">
+                    <a href="http://kj5css-aredn-2.local.mesh/a/status">KJ5CSS-AREDN-2</a>
+                    <p>2 GHz Channel -2 Las Cruces backbone node.</p>
+                  </div>
+                </div>
               </div>
             </article>
 
