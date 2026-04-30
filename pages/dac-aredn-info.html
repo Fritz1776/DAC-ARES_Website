@@ -116,6 +116,30 @@
       gap: 0.75rem;
       margin-top: 0.9rem;
     }
+    .mesh-status-grid {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 0.95rem;
+    }
+
+    .mesh-status-box {
+      padding: 0.9rem;
+      border: 1px solid rgba(216,194,161,.14);
+      border-radius: 12px;
+      background: rgba(0,0,0,.16);
+    }
+
+    .mesh-status-box h3 {
+      margin: 0 0 0.35rem;
+      color: var(--accent);
+    }
+
+    .mesh-status-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
 
     .mesh-node {
       padding: 0.85rem;
@@ -222,7 +246,7 @@
         <aside class="node-panel" aria-labelledby="local-mesh-title">
           <div class="panel-header">
             <h2 id="local-mesh-title">Local Mesh Information</h2>
-            <p>For information on the DAC-ARES AREDN mesh or connecting to the Dona Ana County local mesh via the KJ5CSS Tunnel Server contact the AREDN ADEC Bill Wood at KJ5CSS@Winlink.org</p>
+            <p>Use this area for local node screenshots, service listings, node names, coverage notes, and operating guidance.</p>
           </div>
 
           <div class="node-content">
@@ -233,7 +257,7 @@
                 <p>The DAC-ARES local mesh currently has four independent internet connections, including Starlink, cable internet, and two cellular networks.</p>
 
                 <div class="mesh-warning">
-                  <strong>AREDN access Note:</strong> The node links below are internal <code>.local.mesh</code> addresses. They will only work when your device is connected to an AREDN node that is connected to this mesh network. These links are not reachable from the normal public internet.
+                  <strong>AREDN access warning:</strong> The node links below are internal <code>.local.mesh</code> addresses. They will only work when your device is connected to an AREDN node that is connected to this mesh network. These links are not reachable from the normal public internet.
                 </div>
 
                 <div class="mesh-node-list">
@@ -273,24 +297,31 @@
             <article class="node-card">
               <img src="../assets/aredn-logo.jpg" alt="AREDN logo">
               <div>
-                <h3>Suggested Local Details</h3>
-                <ul class="node-list">
-                  <li>Primary mesh nodes and their locations</li>
-                  <li>Published local services on the mesh</li>
-                  <li>Gateway, tunnel, and supernode status</li>
-                  <li>Coverage notes for Las Cruces and Dona Ana County</li>
-                  <li>Operator setup notes for supported radios and routers</li>
-                </ul>
+                <h3>Mesh Status</h3>
+                <p>This area can be used for current local mesh status information, service availability, and backbone health.</p>
+
+                <div class="mesh-status-grid">
+                  <div class="mesh-status-box">
+                    <h3>Overall Mesh Status</h3>
+                    <p><strong>Status:</strong> Manual update area<br><strong>Last updated:</strong> Add date and time</p>
+                  </div>
+
+                  <div class="mesh-status-box">
+                    <h3>Key Services</h3>
+                    <p>Use this box to show current status for the supernode, Winlink Post Office, MeshChat, file server, tunnel server, and backbone links.</p>
+                  </div>
+
+                  <div class="mesh-status-box">
+                    <h3>Internet Uplinks</h3>
+                    <p>Current local mesh design includes four independent internet connections: Starlink, cable, and two cellular networks.</p>
+                  </div>
+                </div>
               </div>
             </article>
 
             <div class="small-link-row">
               <a href="https://www.arednmesh.org/" target="_blank" rel="noopener">AREDN Official Site</a>
               <a href="https://worldmap.arednmesh.org/#10.5/32.3133/-106.7962" target="_blank" rel="noopener">Open Map Full Screen</a>
-            </div>
-
-            <div class="screenshot-placeholder">
-              <strong>Screenshot area:</strong>saved screenshots
             </div>
           </div>
         </aside>
