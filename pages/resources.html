@@ -1,65 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resources | Dona Ana County ARES</title>
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resources | Dona Ana County ARES</title>
+<link rel="icon" type="image/png" href="../assets/favicon.png" />
+<style>
+:root {
+  --navy: #0d347a;
+  --navy-2: #153f8d;
+  --red: #d61f26;
+  --red-dark: #b8191f;
+  --ink: #1e2430;
+  --ink-soft: #42506a;
+  --paper: #f4f3ef;
+  --panel: rgba(255,255,255,0.92);
+  --line: rgba(13, 52, 122, 0.14);
+  --shadow: 0 10px 26px rgba(16, 30, 56, 0.10);
+  --radius: 18px;
+  --max: 1240px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(244,243,239,0.94), rgba(244,243,239,0.94)),
+    url("../assets/weather-chart-bg.svg");
+  background-size: auto, cover;
+  background-attachment: fixed;
+  line-height: 1.45;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--navy); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+
+.topbar {
+  background: rgba(255,255,255,0.92);
+  border-bottom: 1px solid rgba(13, 52, 122, 0.10);
+  backdrop-filter: blur(6px);
+}
+.topbar-inner {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+}
+.brand {
+  display: grid;
+  grid-template-columns: 102px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+.brand-logo { width: 102px; aspect-ratio: 1; object-fit: contain; }
+.brand-copy h1 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.9rem, 3.2vw, 3.3rem);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.brand-copy p {
+  margin: 0.35rem 0 0;
+  color: var(--ink);
+  font-size: clamp(1rem, 1.35vw, 1.35rem);
+}
+.tagline {
+  justify-self: end;
+  max-width: 420px;
+  border-left: 3px solid var(--red);
+  padding-left: 1rem;
+  text-align: left;
+}
+.tagline strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.tagline span { color: var(--ink-soft); font-size: 0.98rem; }
+
+.nav-wrap {
+  background: linear-gradient(180deg, var(--navy-2), var(--navy));
+  box-shadow: 0 4px 10px rgba(14, 29, 57, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.nav {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  min-height: 56px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background-color .15s ease;
+}
+.nav a:hover { text-decoration: none; background: rgba(255,255,255,0.08); }
+.nav a.active { background: linear-gradient(180deg, var(--red), var(--red-dark)); }
+
+.page-main { padding: 1.35rem 0 2rem; }
+.hero-panel, .content-panel, .card, .mini-card {
+  background: var(--panel);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+.hero-panel { padding: 1.4rem 1.5rem; margin-bottom: 1rem; }
+.back-link {
+  display: inline-flex; align-items: center; gap: .45rem;
+  color: var(--navy); font-weight: 700; margin-bottom: .65rem;
+}
+.back-link::before { content:"←"; }
+.eyebrow {
+  display: inline-flex; gap: .5rem; align-items: center; color: var(--navy);
+  font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; margin-bottom: .75rem;
+}
+.eyebrow::before {
+  content: ""; width: 10px; height: 10px; background: var(--red);
+  border-radius: 999px; box-shadow: 0 0 0 4px rgba(214,31,38,0.12);
+}
+.hero-panel h2 {
+  margin: 0; color: var(--navy); font-size: clamp(1.8rem, 3.5vw, 3.3rem);
+  line-height: 0.98; letter-spacing: -0.04em; font-weight: 800;
+}
+.hero-rule {
+  width: 170px; height: 4px; margin: .9rem 0 1rem;
+  background: linear-gradient(90deg, var(--red), rgba(214,31,38,0));
+  border-radius: 999px;
+}
+.hero-panel p { margin: 0; font-size: 1.05rem; color: var(--ink); max-width: 980px; }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.55fr .95fr;
+  gap: 1rem;
+}
+.content-panel { padding: 1rem; }
+.panel-title {
+  margin: 0 0 .85rem; color: var(--navy); font-size: 1.3rem;
+  border-bottom: 2px solid rgba(214,31,38,.18); padding-bottom: .45rem;
+}
+.subtle { color: var(--ink-soft); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .9rem;
+}
+.card, .mini-card { padding: 1rem; }
+.card h3, .mini-card h3 { margin: 0 0 .35rem; color: var(--navy); font-size: 1.06rem; }
+.card p, .mini-card p { margin: 0; }
+.info-list { list-style: none; padding: 0; margin: 0; }
+.info-list li {
+  padding-left: 1rem; position: relative; margin: .6rem 0; color: var(--ink);
+}
+.info-list li::before {
+  content: ""; position: absolute; left: 0; top: .45rem; width: 7px; height: 7px;
+  background: var(--red); border-radius: 999px;
+}
+.note-box {
+  border-left: 4px solid var(--red);
+  background: rgba(13,52,122,0.04);
+  padding: .9rem 1rem;
+  border-radius: 12px;
+  margin-top: .9rem;
+}
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th, .data-table td {
+  padding: .75rem .65rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top;
+}
+.data-table th {
+  color: var(--navy); font-size: .92rem; text-transform: uppercase; letter-spacing: .03em;
+}
+.kv {
+  display: grid; grid-template-columns: 150px 1fr; gap: .4rem .9rem;
+}
+.kv dt { font-weight: 800; color: var(--navy); }
+.kv dd { margin: 0; }
+
+.badge-links { display:flex; flex-wrap:wrap; gap:.65rem; margin-top:.9rem; }
+.badge-links a {
+  display:inline-flex; padding:.55rem .8rem; border:1px solid rgba(13,52,122,.12);
+  border-radius:999px; background:#fff; font-weight:700; color:var(--navy);
+}
+.embed-frame {
+  width: 100%; min-height: 620px; border: 0; border-radius: 14px; background: #fff;
+}
+.site-footer {
+  margin-top: .5rem; border-top: 3px solid var(--red); background: rgba(255,255,255,0.93);
+  box-shadow: 0 -6px 20px rgba(16, 30, 56, 0.05);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.1fr 1.45fr 1.3fr 1.1fr; gap: 1.5rem; padding: 1.15rem 0;
+}
+.footer-panel h4 { margin: 0 0 .75rem; color: var(--navy); font-size: 1rem; }
+.footer-panel p, .footer-panel li, .footer-panel a { color: var(--ink); font-size: .96rem; }
+.footer-panel ul { list-style:none; padding:0; margin:0; }
+.footer-panel li+li { margin-top:.5rem; }
+.affiliates { display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; }
+.affiliate-box {
+  padding:.65rem .8rem; background: rgba(13,52,122,0.04);
+  border:1px solid rgba(13,52,122,0.08); border-radius:14px; font-weight:800; color:var(--navy);
+}
+.footer-bottom {
+  background: var(--navy); color:#fff; text-align:center; padding:.85rem 1rem; font-size:.94rem; font-weight:700;
+}
+.stripe-bar {
+  height: 10px;
+  background: linear-gradient(90deg, var(--navy) 0 32%, #ffffff 32% 40%, var(--red) 40% 63%, #d8c69e 63% 72%, var(--navy) 72% 100%);
+}
+@media (max-width: 1100px) {
+  .topbar-inner, .content-grid, .footer-grid { grid-template-columns: 1fr; }
+  .tagline { justify-self: start; max-width: unset; }
+}
+@media (max-width: 760px) {
+  .brand { grid-template-columns: 84px 1fr; }
+  .brand-logo { width: 84px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .container { width: min(var(--max), calc(100% - 1rem)); }
+  .kv { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <img class="brand-logo" src="../assets/dac-ares-logo.png" alt="Dona Ana County ARES logo">
-        <div class="brand-title-wrap">
-          <h1>Dona Ana County ARES</h1>
-          <p>Amateur Radio Emergency Service</p>
-        </div>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <img class="brand-logo" src="../assets/ARES-ARRL-Logo-white4%20(transparent).png" alt="Amateur Radio Emergency Service logo" />
+      <div class="brand-copy">
+        <h1>Dona Ana County ARES</h1>
+        <p>Amateur Radio Emergency Service</p>
       </div>
-      <nav class="nav" aria-label="Primary">
-        <a class="home-link" href="../index.html">Home</a>
-        <a href="dac-aredn-info.html">AREDN</a>
-        <a href="local-winlink-info.html">Winlink</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
     </div>
-  </header>
+    <div class="tagline">
+      <strong>Neighbors Helping Neighbors</strong>
+      <span>When All Else Fails, Amateur Radio Works.</span>
+    </div>
+  </div>
+</header>
 
-  <main class="subpage-hero">
-    <div class="container">
-      <div class="subpage-box">
-        <a class="back-link" href="../index.html">Back to home</a>
-        <h2>Resources</h2>
-        <p>Use this page for documents, quick-reference guides, manuals, NIFOG, AUXFOG, and local operating resources.</p>
-        <ul class="feature-list">
-          <li>This placeholder page is active so the homepage link already works.</li>
-          <li>Replace this text later with your actual local content.</li>
-          <li>The page uses the existing site theme and navigation.</li>
-        </ul>
-      </div>
-    </div>
-  </main>
+<div class="nav-wrap">
+  <nav class="container nav" aria-label="Primary navigation">
+    <a href="../index.html">Home</a><a href="dac-aredn-info.html">ARES / AREDN</a><a href="local-winlink-info.html">Winlink</a><a href="net-schedules.html">Net Schedules</a><a href="calendar.html">Calendar</a><a class="active" href="resources.html">Resources</a><a href="../index.html#contact">Contact</a>
+  </nav>
+</div>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="../assets/arrl-mark.png" alt="ARRL emblem">
-        <div>
-          <strong>Dona Ana County ARES</strong>
-          <span>Amateur Radio Emergency Service</span>
-        </div>
+<main class="page-main">
+  <div class="container">
+    <section class="hero-panel">
+      <a class="back-link" href="../index.html">Back to home</a>
+      <div class="eyebrow">Dona Ana County ARES</div>
+      <h2>Resources</h2>
+      <div class="hero-rule"></div>
+      <p>Reference links, official sites, and local support material for operators and volunteers.</p>
+    </section>
+
+    <section class="content-grid">
+      <div class="content-panel">
+        
+<h3 class="panel-title">Resources</h3>
+<div class="card-grid">
+  <article class="card"><h3>ARRL Official Website</h3><p><a href="https://www.arrl.org/" target="_blank" rel="noopener">www.arrl.org</a></p></article>
+  <article class="card"><h3>ARRL ARES Page</h3><p><a href="https://www.arrl.org/ares" target="_blank" rel="noopener">www.arrl.org/ares</a></p></article>
+  <article class="card"><h3>New Mexico ARRL Section ARES/RACES</h3><p><a href="https://www.arrl-nm.org/wp/section-resources/aresraces" target="_blank" rel="noopener">Section resources page</a></p></article>
+  <article class="card"><h3>AREDN Official Site</h3><p><a href="https://www.arednmesh.org/" target="_blank" rel="noopener">www.arednmesh.org</a></p></article>
+  <article class="card"><h3>Winlink Official Site</h3><p><a href="https://winlink.org/" target="_blank" rel="noopener">winlink.org</a></p></article>
+  <article class="card"><h3>N5BL Mesilla Valley Radio Club</h3><p><a href="https://n5bl.org/" target="_blank" rel="noopener">n5bl.org</a></p></article>
+</div>
+
       </div>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="../index.html">Home</a>
-        <a href="dac-aredn-info.html">AREDN</a>
-        <a href="local-winlink-info.html">Winlink</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
-      <div class="footer-copy">&copy; 2026 Dona Ana County ARES. All rights reserved.</div>
-    </div>
-  </footer>
+      <aside class="content-panel">
+        
+<h3 class="panel-title">Local Reference Material</h3>
+<ul class="info-list">
+  <li>Net schedules and meeting details</li>
+  <li>Winlink quick-reference guides</li>
+  <li>AREDN setup information</li>
+  <li>Area repeater and frequency references</li>
+  <li>Training, deployment, and go-kit information</li>
+</ul>
+
+      </aside>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="container footer-grid">
+    <section class="footer-panel">
+      <h4>Dona Ana County ARES</h4>
+      <ul>
+        <li>Public Contact: <a href="mailto:fwagoner@zianet.com">fwagoner@zianet.com</a></li>
+        <li>Monthly Meeting: Third Tuesday, 7:00 PM</li>
+        <li>MVRC Clubhouse, 6609 Jefferson Ln., Las Cruces</li>
+        <li>Weekly ARES Net: Tuesday 6:30 PM on 146.760 (-) Caballo Mountain</li>
+      </ul>
+    </section>
+    <section class="footer-panel">
+      <h4>About ARES</h4>
+      <p>
+        Amateur Radio Emergency Service volunteers are licensed amateur radio operators who register
+        their training, qualifications, and equipment for communications duty in the public interest
+        when normal systems are overloaded, damaged, or unavailable.
+      </p>
+    </section>
+    <section class="footer-panel">
+      <h4>Affiliated With</h4>
+      <div class="affiliates">
+        <div class="affiliate-box">ARRL</div>
+        <div class="affiliate-box">New Mexico Section</div>
+        <div class="affiliate-box">Dona Ana County</div>
+      </div>
+    </section>
+    <section class="footer-panel">
+      <h4>Stay Connected</h4>
+      <ul>
+        <li><a href="net-schedules.html">Listen to the Weekly ARES Net</a></li>
+        <li><a href="calendar.html">View Upcoming Calendar Events</a></li>
+        <li><a href="resources.html">Access Operator Resources</a></li>
+      </ul>
+    </section>
+  </div>
+  <div class="stripe-bar"></div>
+  <div class="footer-bottom">© 2026 Dona Ana County ARES &nbsp;|&nbsp; Proudly Serving Dona Ana County, New Mexico</div>
+</footer>
 </body>
 </html>
