@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#f4f3ef"/>
+  <g stroke="#a9adb5" stroke-width="1.4" fill="none" opacity="0.28">
+    <path d="M-40 150 C120 110, 250 220, 430 170 S760 80, 980 160 S1320 220, 1660 140"/>
+    <path d="M-30 260 C180 220, 280 330, 480 280 S840 190, 1030 280 S1400 360, 1650 290"/>
+    <path d="M-20 380 C150 350, 320 430, 520 390 S820 300, 1060 390 S1360 470, 1620 420"/>
+    <path d="M0 520 C170 480, 340 560, 520 520 S860 430, 1100 520 S1400 600, 1610 560"/>
+    <path d="M0 680 C180 650, 350 730, 560 690 S870 620, 1100 700 S1370 760, 1610 730"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#7c828d" opacity="0.33">
+    <text x="90" y="180">L</text><text x="330" y="120">1008</text><text x="1480" y="145">H</text>
+    <text x="1360" y="640">1012</text><text x="80" y="620">1002</text><text x="1180" y="260">1004</text>
+    <text x="1450" y="300">996</text><text x="520" y="360">1006</text><text x="290" y="520">1010</text>
+  </g>
+  <g stroke="#b8bcc4" stroke-width="1.1" opacity="0.27">
+    <path d="M1120 90 l18 14 l18 -14 l18 14 l18 -14" fill="none"/>
+    <path d="M1180 310 l18 14 l18 -14 l18 14 l18 -14" fill="none"/>
+    <path d="M1280 480 l18 14 l18 -14 l18 14 l18 -14" fill="none"/>
+    <circle cx="220" cy="210" r="5" fill="#b8bcc4"/>
+    <circle cx="760" cy="470" r="5" fill="#b8bcc4"/>
+    <circle cx="1180" cy="640" r="5" fill="#b8bcc4"/>
+    <circle cx="980" cy="250" r="5" fill="#b8bcc4"/>
+  </g>
+</svg>
