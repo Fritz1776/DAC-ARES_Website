@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Resources official icon">
+  <rect x="48" y="48" width="928" height="928" rx="72" fill="none" stroke="#9A9F9B" stroke-width="18"/>
+
+  <!-- document stack -->
+  <path d="M244 202 H650 L782 334 V798 C782 836 752 866 714 866 H244 C206 866 176 836 176 798 V270 C176 232 206 202 244 202 Z"
+        fill="#ffffff" stroke="#062D56" stroke-width="34" stroke-linejoin="round"/>
+  <path d="M650 202 V318 C650 340 668 358 690 358 H782"
+        fill="none" stroke="#062D56" stroke-width="34" stroke-linejoin="round"/>
+  <path d="M650 202 L782 334 H690 C668 334 650 316 650 294 Z" fill="#A8A18A" opacity="0.85"/>
+
+  <!-- link chain badge -->
+  <g transform="translate(650 626) rotate(-35)">
+    <rect x="-122" y="-38" width="150" height="76" rx="38" fill="none" stroke="#D71920" stroke-width="30"/>
+    <rect x="-22" y="-38" width="150" height="76" rx="38" fill="none" stroke="#D71920" stroke-width="30"/>
+    <path d="M-14 0 H38" stroke="#D71920" stroke-width="30" stroke-linecap="round"/>
+  </g>
+
+  <!-- document text lines -->
+  <path d="M278 358 H548 M278 452 H640 M278 546 H558 M278 640 H478 M278 734 H598"
+        fill="none" stroke="#062D56" stroke-width="32" stroke-linecap="round"/>
+
+  <!-- resource bookmark -->
+  <path d="M258 212 H360 V420 L309 380 L258 420 Z" fill="#D71920"/>
+  <path d="M300 278 L310 298 L332 301 L316 317 L320 340 L300 329 L280 340 L284 317 L268 301 L290 298 Z"
+        fill="#ffffff"/>
+
+  <!-- small globe/web symbol -->
+  <circle cx="730" cy="238" r="82" fill="#ffffff" stroke="#062D56" stroke-width="28"/>
+  <path d="M662 238 H798 M730 156 C700 192 686 220 686 238 C686 256 700 284 730 320
+           M730 156 C760 192 774 220 774 238 C774 256 760 284 730 320"
+        fill="none" stroke="#062D56" stroke-width="18" stroke-linecap="round"/>
+</svg>
